@@ -1,0 +1,63 @@
+html, body {
+    height: 100%;
+}
+
+/** {*/
+/*    border: 1px solid red;*/
+/*}*/
+
+body {
+    width: 100vw;
+    background-color: #87898A;
+}
+
+.content {
+    margin: auto;
+    margin-top: 100px;
+    max-width: 960px;
+    background-color: #F3F6F7;
+    line-height: 1.6em;
+    color: #092E47;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+}
+
+.content a {
+    text-decoration: none;
+    color: #852E2D;
+}
+
+.content ul {
+    list-style: none;
+}
+
+.post .title {
+    font-size: 3em;
+}
+
+.post .author {
+    font-size: 1.5em;
+}
+
+.post .date {
+    font-size: 1em;
+}
+
+.comment-container {
+    background-color: white;
+    margin: 1em;
+    padding: .5em;
+}
+
+.comment-container hr {
+    margin: .25em auto;
+}
+
+.comment {
+    padding: 1em 2em;
+    margin-bottom: 0;
+}
