@@ -29,6 +29,7 @@ class MainHandler(TemplateHandler):
 
 class CommentHandler(TemplateHandler):
     def post(self, post_id):
+        print("Comment post_id = " + post_id)
         comment = self.get_body_argument('comment')
         self.session.query('''
             INSERT INTO comment VALUES (
@@ -37,18 +38,19 @@ class CommentHandler(TemplateHandler):
             %(post_id)s,
             current_timestamp)
             ''', {'comment': comment, 'post_id': post_id})
+        print("Comment extract: " + comment[0])
         slug = self.session.query('SELECT slug FROM post WHERE id = %(id)s', {'id': post_id})[0]['slug']
+        print("slug: " + slug)
         self.redirect("/post/" + slug)
 
 class PostHandler(TemplateHandler):
     def get(self, slug):
         blog_post_data = self.session.query('''
-            SELECT * 
-            FROM post 
-            INNER JOIN author ON author.id = post.author_id
+            SELECT p.id, p.title, p.slug, p.body, p.post_date, a.name 
+            FROM post p
+            INNER JOIN author a ON a.id = p.author_id
             WHERE slug = %(slug)s
-            ''', {'slug': slug})
-        blog_post_data = blog_post_data[0]
+            ''', {'slug': slug})[0]
         blog_post_data['body'] = markdown(blog_post_data['body'])
         comments = self.session.query('''
             SELECT c.comment, c.comment_post_datetime

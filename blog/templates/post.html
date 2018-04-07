@@ -6,10 +6,9 @@
 
 {% block content %}
     <h2>{{ post.title }}</h2>
-    <!-- make this a link to author's page -->
-    <h4>{{ post.name }}</h4>
+    <h4><a href='/author/{{ post.author_id }}'>{{ post.name }}</a></h4>
     <h5>{{ post.post_date.strftime('%B %e, %Y') }}</h5>
-    <br><br>
+    <br>
     <p>{{ post.body|safe }}</p>
     <h3>Comment</h3>
     <form action="/post/{{ post.id }}/comment" method="post">
