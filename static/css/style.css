@@ -2,18 +2,38 @@ html, body {
     height: 100%;
 }
 
-/** {*/
-/*    border: 1px solid red;*/
-/*}*/
+* {
+    border: 1px solid red;
+}
 
 body {
     width: 100vw;
-    background-color: #87898A;
+    /*background-color: #87898A;*/
+    background-color: #C9CBCC;
+}
+
+header {
+    min-height: 10vh;
+    /*background-color: #081C29;*/
+    background-color: #2B2B2B;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav-links {
+    display: flex;
+    align-items: center;
+}
+
+#nav-links ul {
+    display: flex;
 }
 
 .content {
     margin: auto;
-    margin-top: 100px;
     max-width: 960px;
     background-color: #F3F6F7;
     line-height: 1.6em;
@@ -24,6 +44,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 85vh;
+}
+
+.content p {
+    color: rgba(9, 46, 71, .9);
+    line-height: 2em;
+    letter-spacing: .05em;
 }
 
 .content a {
@@ -47,6 +73,24 @@ body {
     font-size: 1em;
 }
 
+.post form {
+    margin: 1em;
+    margin-bottom: 2em;
+}
+
+.post form textarea {
+    width: 100%;
+    min-height: 6em;
+}
+
+.post form button {
+    height: 2em;
+    width: 7em;
+    background-color: #0E3147;
+    color: white;
+    border: none;
+}
+
 .comment-container {
     background-color: white;
     margin: 1em;
@@ -60,4 +104,8 @@ body {
 .comment {
     padding: 1em 2em;
     margin-bottom: 0;
+}
+
+footer {
+    min-height: 5vh;
 }

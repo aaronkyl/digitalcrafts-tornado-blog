@@ -46,7 +46,7 @@ class CommentHandler(TemplateHandler):
 class PostHandler(TemplateHandler):
     def get(self, slug):
         blog_post_data = self.session.query('''
-            SELECT p.id, p.title, p.slug, p.body, p.post_date, a.name 
+            SELECT p.id, p.title, p.slug, p.body, p.post_date, p.author_id, a.name 
             FROM post p
             INNER JOIN author a ON a.id = p.author_id
             WHERE slug = %(slug)s
@@ -57,6 +57,7 @@ class PostHandler(TemplateHandler):
             FROM comment c
             INNER JOIN post p on p.id = c.post_id
             WHERE p.slug = %(slug)s
+            ORDER BY comment_post_datetime DESC
             ''', {'slug': slug})
         self.render_template("post.html", {'post': blog_post_data, 'comments': comments})
 
